@@ -5,9 +5,9 @@ import {
   InputLeftElement,
   InputGroup,
   useClipboard,
-  Button,
-  Tooltip,
+  Icon,
 } from "@chakra-ui/react";
+import { FaBitcoin } from "react-icons/fa";
 export default function BitcoinInteract() {
   // Import the store and fetch the txn hash.
   const { hasCopied, onCopy } = useClipboard("Dummy");
@@ -23,49 +23,41 @@ export default function BitcoinInteract() {
   }
   return (
     <Flex
-      direction={"column"}
-      justifyContent={"space-evenly"}
+      direction={"row"}
+      justifyContent={"space-between"}
       alignItems={"center"}
+      width={"30%"}
     >
-      <InputGroup mb={2}>
-        <InputLeftElement
-          pointerEvents="none"
-          color="orange.400"
-          fontSize="1.2em"
-          children="₿"
-        />
-
+      <InputGroup
+        mb={2}
+        outline={"3px solid orange"}
+        borderRadius={"20px"}
+        overflow={"hidden"}
+        width={"100%"}
+        mr={2}
+      >
         <Input
-          placeholder="Enter bitcoin amount"
-          focusBorderColor="orange.400"
-          variant={"outline"}
-          width={"70%"}
+          type={"number"}
+          placeholder="0.0"
+          focusBorderColor="none"
+          variant={"filled"}
+          width={"100%"}
           value={amount}
+          height={"100px"}
           onChange={handleChangeAmount}
+          fontSize={"4rem"}
+          color={"orange.400"}
+          textAlign={"left"}
         ></Input>
 
-        <Button
-          width={"30%"}
-          minW={"30%"}
-          _hover={{
-            bgColor: "orange.400",
-            color: "white",
-          }}
-          variant={"outline"}
-          borderColor={"orange.300"}
-          fontWeight={"normal"}
-          onClick={setBitcoinValue}
-        >
-          Deposit
-        </Button>
+        <InputLeftElement
+          pointerEvents="none"
+          color={"orange.400"}
+          children={"₿"}
+          alignItems={"center"}
+          fontSize={"xx-large"}
+        />
       </InputGroup>
-      <Input
-        value={"Txn Hash"}
-        isReadOnly
-        placeholder="Null"
-        onClick={onCopy}
-        textAlign={"center"}
-      ></Input>
     </Flex>
   );
 }

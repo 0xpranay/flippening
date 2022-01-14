@@ -29,7 +29,6 @@ export default function CurrencyComponent({ type = "BTC" }: AppProps) {
         justifyContent={"space-between"}
       >
         <CurrencyLogo type={currency.type} />
-        <BitcoinInteract></BitcoinInteract>
       </Flex>
     </Box>
   );

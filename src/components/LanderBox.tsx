@@ -1,5 +1,5 @@
 import { Flex } from "@chakra-ui/react";
-import CurrencyComponent from "./CurrencyComponent";
+import MainCard from "./MainCard";
 export default function LanderBox() {
   return (
     <Flex
@@ -7,11 +7,11 @@ export default function LanderBox() {
       justifyContent={"center"}
       alignItems={"center"}
       padding={[0, 5, 6, 7, 10]}
-      height={"100vh"}
-      maxHeight={"100%"}
+      background={"linear-gradient(to right, #FFFFFF, #ECE9E6)"}
+      height={"100%"}
+      // maxHeight={"100%"}
     >
-      <CurrencyComponent type="BTC" />
-      <CurrencyComponent type="ETH" />
+      <MainCard></MainCard>
     </Flex>
   );
 }
