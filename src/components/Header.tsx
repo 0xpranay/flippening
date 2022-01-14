@@ -18,7 +18,7 @@ export default function Header() {
         fontSize="5xl"
         fontWeight="extrabold"
         width={"50%"}
-        color={"black"}
+        color={"pink.400"}
       >
         Flippening.money 🦇
       </Text>

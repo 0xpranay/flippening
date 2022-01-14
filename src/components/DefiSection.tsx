@@ -9,6 +9,7 @@ export default function DefiSection() {
       justifyContent={"center"}
       alignItems={"center"}
       width={"100%"}
+      marginBottom={4}
     >
       <Text
         bgGradient="linear(to-l, #7928CA, #FF0080)"
