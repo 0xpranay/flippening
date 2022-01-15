@@ -11,13 +11,11 @@ export default function DefiSection() {
       width={"100%"}
       marginBottom={4}
     >
-      <Text
-        bgGradient="linear(to-l, #7928CA, #FF0080)"
-        bgClip="text"
-        fontSize="5xl"
-        fontWeight="extrabold"
-      >
-        Choose what to do on Ethereum
+      <Text fontSize="5xl" fontWeight="extrabold" color="pink.400">
+        Choose what to do on{" "}
+        <Text fontSize={"5xl"} color="#608DE2" display={"inline"}>
+          Ethereum
+        </Text>
       </Text>
       <DefiShowcase></DefiShowcase>
     </Flex>

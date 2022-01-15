@@ -1,16 +1,14 @@
 import { Flex, Text, Button } from "@chakra-ui/react";
-import React from "react";
+import { useState } from "react";
 
 export default function Header() {
+  const [connected, setConnected] = useState(false);
   return (
     <Flex
-      position={"absolute"}
-      top={0}
-      left={0}
       width={"100%"}
       justifyContent={"space-between"}
       alignItems={"center"}
-      padding={4}
+      padding={[2, 4, 6, 8, 10, 12]}
     >
       <Text
         bgGradient="linear(to-l, #7928CA, #FF0080)"
@@ -31,6 +29,7 @@ export default function Header() {
             color: "white",
           }}
           variant={"solid"}
+          display={connected ? "none" : "visible"}
         >
           Connect Metamask 🦊
         </Button>
