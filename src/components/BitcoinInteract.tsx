@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Flex,
   Input,
@@ -7,20 +7,28 @@ import {
   useClipboard,
   Icon,
 } from "@chakra-ui/react";
-import { FaBitcoin } from "react-icons/fa";
-export default function BitcoinInteract() {
-  // Import the store and fetch the txn hash.
-  const { hasCopied, onCopy } = useClipboard("Dummy");
-  const [amount, setAmount] = useState(0.01);
 
+import { FaBitcoin } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+
+export default function BitcoinInteract() {
+  const [amount, setAmount] = useState(0.01);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({
+      type: "btcAmount",
+      payload: { isValid: true, amount: 0.01 },
+    });
+  }, []);
   function handleChangeAmount(event: any) {
     setAmount(event.target.value);
+    dispatch({
+      type: "btcAmount",
+      payload: { isValid: true, amount: event.target.value },
+    });
   }
 
-  function setBitcoinValue() {
-    // Code to handle when user confirms BTC amount
-    alert("Confirmed user amount");
-  }
   return (
     <Flex
       direction={"row"}

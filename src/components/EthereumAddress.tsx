@@ -10,12 +10,21 @@ import { CheckIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import { ethers } from "ethers";
 
+import { useDispatch } from "react-redux";
 export default function EthereumAddress() {
   const [isValid, setisValid] = useState(false);
-
+  const dispatch = useDispatch();
   function validateAddress(event: any) {
     let address = event.target.value;
-    setisValid(ethers.utils.isAddress(address));
+    let isValid = ethers.utils.isAddress(address);
+    setisValid(isValid);
+    dispatch({
+      type: "ethAddress",
+      payload: {
+        isValid: isValid,
+        address: address,
+      },
+    });
   }
   return (
     <Flex

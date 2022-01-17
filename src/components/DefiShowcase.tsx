@@ -1,14 +1,30 @@
 import { Flex, useRadioGroup } from "@chakra-ui/react";
-import React from "react";
+import { useEffect } from "react";
 import DefiCard from "./DefiCard";
 import RadioCard from "./RadioCard";
+import { useDispatch } from "react-redux";
 export default function DefiShowcase() {
   const options = ["WBTC", "ETH", "AAVE"];
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({
+      type: "targetChoice",
+      payload: { isValid: true, choice: "ETH" },
+    });
+  }, []);
+
+  function updateChoice(newChoice: string) {
+    dispatch({
+      type: "targetChoice",
+      payload: { isValid: true, choice: newChoice },
+    });
+  }
   const { getRootProps, getRadioProps } = useRadioGroup({
     name: "target",
     defaultValue: "ETH",
-    onChange: console.log,
+    onChange: updateChoice,
   });
   const group = getRootProps();
 

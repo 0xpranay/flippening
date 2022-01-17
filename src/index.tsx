@@ -5,6 +5,9 @@ import App from "./App";
 import { ChakraProvider } from "@chakra-ui/react";
 import "focus-visible/dist/focus-visible";
 
+import store from "./store/index";
+import { Provider } from "react-redux";
+
 import {
   extendTheme,
   theme as base,
@@ -43,7 +46,9 @@ const theme = extendTheme(
 ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </ChakraProvider>
   </React.StrictMode>,
   document.getElementById("root")
