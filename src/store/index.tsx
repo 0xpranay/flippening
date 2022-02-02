@@ -12,8 +12,15 @@ interface IState {
     isValid: boolean;
     address: string;
   };
-  provider: null;
-  signer: null;
+  modal: {
+    status: string;
+    flag: number;
+    bitcoinHash: string;
+    ethereumHash: string;
+    open: false;
+  };
+  provider: any;
+  signer: any;
 }
 const initialState: IState = {
   btcAmount: {
@@ -28,11 +35,19 @@ const initialState: IState = {
     isValid: false,
     address: "",
   },
+  modal: {
+    status: "",
+    flag: 0,
+    bitcoinHash: "",
+    ethereumHash: "",
+    open: false,
+  },
   provider: null,
   signer: null,
 };
 
 function appReducer(state = initialState, action: any) {
+  console.log("Called ", action.type, " With payload, ", action.payload);
   if (action.type == "btcAmount") {
     return {
       ...state,
@@ -65,6 +80,13 @@ function appReducer(state = initialState, action: any) {
       ...state,
       provider: action.payload.provider,
       signer: action.payload.signer,
+    };
+  }
+  if (action.type == "modal") {
+    console.log(action.payload.modal);
+    return {
+      ...state,
+      modal: action.payload,
     };
   }
 
